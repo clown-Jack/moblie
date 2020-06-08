@@ -52,7 +52,7 @@ export const footNavRoute = [
     }
   },
   {
-    path:"/my",
+    path:"/mys",
     component:()=>{},
     meta:{
       title:"我的",
