@@ -1,9 +1,11 @@
 module.exports = {
   plugins: {
-    autoprefixer: {}
-  },
-  'postcss-pxtorem': {
-    rootValue: 37.5,
-    propList: ['*'],
-  },
-}
+    //浏览器加前缀
+    autoprefixer: {},
+    //px转化rem
+    "postcss-pxtorem": {  
+      rootValue: 100,
+      propList: ["*"]
+    }
+  }
+};
