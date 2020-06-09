@@ -2,22 +2,14 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
-
-export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
-     {
-       path:"/guide",
-       component:()=>import("@/views/guide")
-     }
-  ]
-})
-
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 export const footNavRoute = [
   {
     path:"/home",
-    component:()=>{},
+    component:()=>import("@/views/home/home"),
     meta:{
       title:"首页",
       iconClass:"icon-yemian-copy",
@@ -26,7 +18,7 @@ export const footNavRoute = [
   },
   {
     path:"/sort",
-    component:()=>{},
+    component:()=>import("@/views/sort/sort"),
     meta:{
       title:"分类",
       iconClass:"icon-fenleixuanzhong",
@@ -61,3 +53,14 @@ export const footNavRoute = [
     }
   }
 ]
+export default new Router({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes: [
+     {
+       path:"/guide",
+       component:()=>import("@/views/guide")
+     },
+     ...footNavRoute
+  ]
+})

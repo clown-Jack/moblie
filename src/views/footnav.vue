@@ -1,10 +1,20 @@
 <template>
   <footer>
-    <van-tabbar v-model="active" active-color="#07c160" inactive-color="#000" route>
-      <van-tabbar-item v-for="item in footNavRoute" :key="item.meta.title" :to="item.path" >
-        <span>{{item.meta.title}}</span>
+    <van-tabbar
+      v-model="active"
+      active-color="#07c160"
+      inactive-color="#000"
+      route
+    >
+      <van-tabbar-item
+        v-for="item in footNavRoute"
+        :key="item.meta.title"
+        :to="item.path"
+        replace
+      >
+        <span>{{ item.meta.title }}</span>
         <template #icon="">
-          <span :class="[item.meta.iconClass,item.meta.iconfont]"></span>
+          <span :class="[item.meta.iconClass, item.meta.iconfont]"></span>
         </template>
       </van-tabbar-item>
     </van-tabbar>
@@ -12,7 +22,7 @@
 </template>
 <script>
 import { Tabbar, TabbarItem } from "vant";
-import {footNavRoute} from '../router/index'
+import { footNavRoute } from "../router/index";
 export default {
   components: {
     [Tabbar.name]: Tabbar,
@@ -23,17 +33,18 @@ export default {
       active: "首页"
     };
   },
-  computed:{
-      footNavRoute(){
-          return footNavRoute
-      }
+  computed: {
+    footNavRoute() {
+      console.log(this);
+      return footNavRoute;
+    }
   }
 };
 </script>
 <style lang="scss" scoped>
-footer{
-    span{
-        font-size: 14px;
-    }
+footer {
+  span {
+    font-size: 14px;
+  }
 }
 </style>
