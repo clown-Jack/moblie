@@ -1,19 +1,13 @@
 <template>
   <div class="guide-contant">
     <div class="guide-gonum" @click="leaveGuide">
-      <span>{{ num }}</span
-      >跳过
+      <span>{{ num }}</span>跳过
     </div>
-    <van-swipe :autoplay="autoplay" :loop="false" indicator-color="red" style="z-index:99">
-      <van-swipe-item v-for="(image, index) in images" :key="index">
-        <img v-lazy="image" height="100%" width="100%" />
-      </van-swipe-item>
-    </van-swipe>
+    <Swiper :autoplay="autoplay" :images="images" :color="color" :zIndex="zIndex"></Swiper>
   </div>
 </template>
 <script>
-import Vue from "vue";
-import { Swipe, SwipeItem } from "vant";
+import Swiper from "@/components/swiper";
 export default {
   name: "guide",
   data() {
@@ -25,12 +19,13 @@ export default {
       ],
       autoplay: 3000,
       num: 5,
-      timer:null
+      timer: null,
+      color: "red",
+      zIndex: 120
     };
   },
   components: {
-    [Swipe.name]: Swipe,
-    [SwipeItem.name]: SwipeItem
+    Swiper
   },
   mounted() {
     this.initGuide();
@@ -40,14 +35,14 @@ export default {
       this.timer = setInterval(() => {
         this.num--;
         if (this.num == -1) {
-           this.leaveGuide();
+          this.leaveGuide();
         }
       }, 1800);
     },
-    leaveGuide(){
-        clearInterval(this.timer);
-        localStorage.setItem("isguide",true);
-        this.$router.push("/")
+    leaveGuide() {
+      clearInterval(this.timer);
+      localStorage.setItem("isguide", true);
+      this.$router.push("/");
     }
   }
 };

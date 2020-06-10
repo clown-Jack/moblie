@@ -1,19 +1,9 @@
 <template>
   <footer>
-    <van-tabbar
-      v-model="active"
-      active-color="#07c160"
-      inactive-color="#000"
-      route
-    >
-      <van-tabbar-item
-        v-for="item in footNavRoute"
-        :key="item.meta.title"
-        :to="item.path"
-        replace
-      >
+    <van-tabbar v-model="active" active-color="#07c160" inactive-color="#000" route>
+      <van-tabbar-item v-for="item in footNavRoute" :key="item.meta.title" :to="item.path" replace>
         <span>{{ item.meta.title }}</span>
-        <template #icon="">
+        <template #icon>
           <span :class="[item.meta.iconClass, item.meta.iconfont]"></span>
         </template>
       </van-tabbar-item>
@@ -30,7 +20,7 @@ export default {
   },
   data() {
     return {
-      active: "首页"
+      active: 0
     };
   },
   computed: {
