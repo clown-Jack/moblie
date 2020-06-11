@@ -5,7 +5,7 @@ module.exports = {
     //px转化rem
     "postcss-pxtorem": {  
       rootValue: 100,
-      propList: ["*"]
+      propList: ["*",'!font*']
     }
   }
 };
