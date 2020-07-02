@@ -20,7 +20,9 @@
             <span class="spike-span">秒杀</span>
             <div class="spike-time">
               <span class="spike-time-title">距结束</span>
-              <p class="spkie-time-p">04:17:14</p>
+              <p class="spkie-time-p">
+                <timeDown></timeDown>
+              </p>
             </div>
           </div>
           <ul class="spike-content">
@@ -54,16 +56,25 @@
         </li>
       </ul>
     </div>
+    <container-tab :tabArr="tabArr">
+       <shop-card></shop-card>
+    </container-tab>
   </div>
 </template>
 <script>
 import mobileHeader from "./components/header";
 import grid from "@/components/grid";
+import timeDown from '@/components/timeDown';
+import containerTab from './components/containertab';
+import shopCard from '@/components/shopCard';
 export default {
   name: "home",
   components: {
     mobileHeader,
-    grid
+    grid,
+    timeDown,
+    containerTab,
+    shopCard
   },
   data() {
     return {
@@ -114,6 +125,36 @@ export default {
         { title: "天天领钱", remark: "领现金" },
         { title: "精选菜谱", remark: "跟着做" },
         { title: "清凉一夏", remark: "解馋实惠" }
+      ],
+      tabArr:[
+        {
+          id:1,
+          title:"猜你喜欢"
+        },
+         {
+          id:2,
+          title:"家常小炒"
+        },
+        {
+          id:3,
+          title:"特价促销"
+        },
+        {
+          id:4,
+          title:"菜谱甄选"
+        },
+        {
+          id:4,
+          title:"解馋火锅"
+        },
+        {
+          id:4,
+          title:"零食加油站"
+        },
+        {
+          id:4,
+          title:"当家大菜"
+        }
       ]
     };
   }

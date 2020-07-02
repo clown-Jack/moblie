@@ -5,6 +5,9 @@ import store from "./store/index";
 import { Lazyload } from "vant";
 import "./lib/rem";
 import "./assets/styles/reset.scss";
+import animate from 'animate.css';
+
+Vue.use(animate);
 
 //全局懒加载
 Vue.use(Lazyload, {
