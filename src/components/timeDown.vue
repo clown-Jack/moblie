@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     goTime() {
-      let diffNow = new Date("2020/7/3").getTime() - new Date().getTime();
+      let diffNow = new Date("2020/07/04").getTime() - new Date().getTime();
       this.hours = toDo(Math.floor((diffNow / (1000 * 60 * 60)) % 24));
       this.minutes = toDo(Math.floor((diffNow / (1000 * 60)) % 60));
       this.seconds = toDo(Math.floor((diffNow / 1000) % 60));

@@ -5,10 +5,14 @@
         <div class="top-positon">当前定位不在配送范围></div>
         <div class="iconfont icon-lingdang"></div>
       </div>
-      <div class="header-search">
-        <van-icon name="search" class="search-icon" />
-        <span>西瓜</span>
-      </div>
+      <van-sticky @scroll="stickScroll">
+        <div :style="topScroll" class="search-bg">
+          <div class="header-search" :style="scroll">
+            <van-icon name="search" class="search-icon" />
+            <span>西瓜</span>
+          </div>
+        </div>
+      </van-sticky>
     </div>
     <Swiper
       :images="images"
@@ -21,7 +25,7 @@
   </div>
 </template>
 <script>
-import { Icon } from "vant";
+import { Icon, Sticky } from "vant";
 import Swiper from "@/components/swiper";
 export default {
   name: "home",
@@ -36,12 +40,37 @@ export default {
       width: "100%",
       height: "200",
       autoplay: 2000,
-      zIndex: 99
+      zIndex: 99,
+      scroll: "",
+      topScroll: ""
     };
   },
   components: {
     Swiper,
-    [Icon.name]: Icon
+    [Icon.name]: Icon,
+    [Sticky.name]: Sticky
+  },
+  methods: {
+    stickScroll(res) {
+      /**
+       * isFixed 是否吸顶
+       * scrollTop 距离顶部位置
+       */
+      const { isFixed, scrollTop } = res;
+      if (isFixed) {
+        let styles = {
+          background: "#edeff3"
+        };
+        let topScroll = {
+          background: "#ffffff"
+        };
+        this.scroll = styles;
+        this.topScroll = topScroll;
+      } else {
+        this.scroll = "";
+        this.topScroll = "";
+      }
+    }
   }
 };
 </script>
@@ -73,6 +102,9 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.search-bg{
+  overflow: hidden;
 }
 .header-search {
   background: #fff;
