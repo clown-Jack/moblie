@@ -65,6 +65,7 @@ export default {
    display: flex;
 } 
 .card-bottom{
+  margin-top:10px ;
   justify-content:space-between;
 }
 .card-price {

@@ -57,16 +57,23 @@
       </ul>
     </div>
     <container-tab :tabArr="tabArr">
-       <shop-card></shop-card>
+      <shop-card
+        v-for="(item, index) in shopArr"
+        :key="index"
+        :title="item.title"
+        :desc="item.desc"
+        :price="item.price"
+        :originPrice="item.originPrice"
+      ></shop-card>
     </container-tab>
   </div>
 </template>
 <script>
 import mobileHeader from "./components/header";
 import grid from "@/components/grid";
-import timeDown from '@/components/timeDown';
-import containerTab from './components/containertab';
-import shopCard from '@/components/shopCard';
+import timeDown from "@/components/timeDown";
+import containerTab from "./components/containertab";
+import shopCard from "@/components/shopCard";
 export default {
   name: "home",
   components: {
@@ -126,34 +133,42 @@ export default {
         { title: "精选菜谱", remark: "跟着做" },
         { title: "清凉一夏", remark: "解馋实惠" }
       ],
-      tabArr:[
+      tabArr: [
         {
-          id:1,
-          title:"猜你喜欢"
-        },
-         {
-          id:2,
-          title:"家常小炒"
+          id: 1,
+          title: "猜你喜欢"
         },
         {
-          id:3,
-          title:"特价促销"
+          id: 2,
+          title: "家常小炒"
         },
         {
-          id:4,
-          title:"菜谱甄选"
+          id: 3,
+          title: "特价促销"
         },
         {
-          id:4,
-          title:"解馋火锅"
+          id: 4,
+          title: "菜谱甄选"
         },
         {
-          id:4,
-          title:"零食加油站"
+          id: 4,
+          title: "解馋火锅"
         },
         {
-          id:4,
-          title:"当家大菜"
+          id: 4,
+          title: "零食加油站"
+        },
+        {
+          id: 4,
+          title: "当家大菜"
+        }
+      ],
+      shopArr: [
+        {
+          title: "供港板栗南瓜800g起",
+          desc: "栗面口感,优质粗粮",
+          price: "16.6",
+          originPrice: "19.6"
         }
       ]
     };
@@ -240,7 +255,7 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    li{
+    li {
       flex: 1;
     }
   }
@@ -275,17 +290,17 @@ export default {
     .spike-right-div {
       border-right: 1px solid #edeff3;
       flex: 1;
-      .spike-right-p{
+      .spike-right-p {
         font-size: 14px;
       }
-      .spike-right-span-left{
-            font-size: 12px;
-            color:green;
-        }
-        .spike-right-span-right{
-            font-size: 12px;
-            color: orange;
-        }
+      .spike-right-span-left {
+        font-size: 12px;
+        color: green;
+      }
+      .spike-right-span-right {
+        font-size: 12px;
+        color: orange;
+      }
     }
   }
 }
